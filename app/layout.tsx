@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Linkedin Scrapper",
+  title: "Job Scrapper",
   description: "Scrape Company Jobs Sectino in which you want to apply.",
 };
 
