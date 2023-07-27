@@ -3,6 +3,8 @@ import { auth } from "@/components/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 export const handleCreateUser = async (
@@ -48,6 +50,18 @@ export const handleSignIn = async (
     return user;
   } catch (error: any) {
     setLoading(false);
+    toast.error(error.message);
+  }
+};
+
+export const handleGoogleSignIn = async () => {
+  const provider = new GoogleAuthProvider();
+  try {
+    const userCredential = await signInWithPopup(auth, provider);
+    const user = userCredential.user;
+    console.log(user);
+    return user;
+  } catch (error: any) {
     toast.error(error.message);
   }
 };

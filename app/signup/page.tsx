@@ -3,7 +3,7 @@ import { Button, Input } from "@/components/common";
 import Link from "next/link";
 import { useState, FormEvent } from "react";
 import Image from "next/image";
-import { handleCreateUser } from "@/utils/apis/auth";
+import { handleCreateUser, handleGoogleSignIn } from "@/utils/apis/auth";
 import { Toaster } from "react-hot-toast";
 
 export default function Signup() {
@@ -63,13 +63,15 @@ export default function Signup() {
                 alt="Google"
                 width={50}
                 height={50}
+                className="cursor-pointer"
+                onClick={() => handleGoogleSignIn()}
               />
-              <Image
+              {/* <Image
                 src="/github_logo.png"
                 alt="Github"
                 width={50}
                 height={50}
-              />
+              /> */}
             </div>
           </div>
           <p className="text-center">
