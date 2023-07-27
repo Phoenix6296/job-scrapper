@@ -2,6 +2,7 @@
 import { Button } from "@/components/common";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Toaster } from "react-hot-toast";
 
 const Navbar = ({ router }: { router: any }) => {
   return (
