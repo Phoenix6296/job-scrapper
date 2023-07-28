@@ -18,7 +18,7 @@ export default function Signup() {
   };
 
   return (
-    <section className="grid md:grid-cols-2 grid-cols-1 h-[100dvh]">
+    <section className="xl:max-w-[1600px] mx-auto grid md:grid-cols-2 grid-cols-1 h-[100dvh]">
       <div className="w-[90%] mx-auto flex flex-col justify-center">
         <h1 className="text-3xl mb-20">Signup</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -56,23 +56,15 @@ export default function Signup() {
             loading={loading}
           />
           <p className="text-center">or Signup using</p>
-          <div>
-            <div className="flex justify-center gap-5">
-              <Image
-                src="/google_logo.png"
-                alt="Google"
-                width={50}
-                height={50}
-                className="cursor-pointer"
-                onClick={() => handleGoogleSignIn()}
-              />
-              {/* <Image
-                src="/github_logo.png"
-                alt="Github"
-                width={50}
-                height={50}
-              /> */}
-            </div>
+          <div className="mx-auto">
+            <Image
+              src="/google_logo.png"
+              alt="Google"
+              width={50}
+              height={50}
+              className="cursor-pointer"
+              onClick={() => handleGoogleSignIn()}
+            />
           </div>
           <p className="text-center">
             Already have an account?{" "}
