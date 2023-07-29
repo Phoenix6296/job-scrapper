@@ -53,6 +53,7 @@ export default function Home() {
           onClick={() => router.push("/signup")}
         />
       </div>
+      <Toaster />
     </main>
   );
 }

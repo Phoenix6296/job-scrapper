@@ -5,6 +5,9 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut,
+  setPersistence,
+  browserLocalPersistence,
 } from "firebase/auth";
 
 export const handleCreateUser = async (
@@ -24,6 +27,7 @@ export const handleCreateUser = async (
       email,
       password
     );
+    setPersistence(auth, browserLocalPersistence);
     setLoading(false);
     const user = userCredential.user;
     return user;
@@ -45,8 +49,9 @@ export const handleSignIn = async (
       email,
       password
     );
-    setLoading(false);
+    setPersistence(auth, browserLocalPersistence);
     const user = userCredential.user;
+    setLoading(false);
     return user;
   } catch (error: any) {
     setLoading(false);
@@ -59,8 +64,18 @@ export const handleGoogleSignIn = async () => {
   try {
     const userCredential = await signInWithPopup(auth, provider);
     const user = userCredential.user;
-    console.log(user);
+    setPersistence(auth, browserLocalPersistence);
     return user;
+  } catch (error: any) {
+    toast.error(error.message);
+  }
+};
+
+export const handleSignOut = async (router: any) => {
+  try {
+    await signOut(auth);
+    router.push("/");
+    toast.success("Signed out successfully");
   } catch (error: any) {
     toast.error(error.message);
   }
